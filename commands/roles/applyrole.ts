@@ -17,7 +17,7 @@ function isRole(role: Role | APIRole): role is Role {
 	return role['id'] !== null;
 }
 
-class Autorole extends Command{
+class ApplyRole extends Command{
   get name(){return "applyrole";}
   get description(){return "Apply roles to every member. (Note. up to 1000 members)";}
   async execute(interaction: CommandInteraction): Promise<void>{
@@ -75,4 +75,4 @@ class Autorole extends Command{
   }
 };
 
-export const command = new Autorole();
+export const command = new ApplyRole();

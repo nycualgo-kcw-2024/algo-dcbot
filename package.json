@@ -1,21 +1,20 @@
 {
-  "name": "tanikaze-amane",
+  "name": "arisu-tachibana",
   "version": "1.0.1",
   "main": "index.ts",
   "scripts": {
-    "test": "ts-node index.ts",
-    "clean": "rm -f ./*.js ./commands/*/*.js ./classes/**.js"
+    "test": "ts-node index.ts"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/konchinshih/Tanikaze-Amane.git"
+    "url": "git+https://github.com/konchinshih/algo-dcbot.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/konchinshih/Tanikaze-Amane/issues"
+    "url": "https://github.com/konchinshih/algo-dcbot/issues"
   },
-  "homepage": "https://github.com/konchinshih/Tanikaze-Amane#readme",
+  "homepage": "https://github.com/konchinshih/algo-dcbot",
   "dependencies": {
     "@types/node": "^20.3.2",
     "axios": "^1.6.2",
