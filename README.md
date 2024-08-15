@@ -3,9 +3,11 @@
 ## Run
 
 1. Setup the environment variables in `.env`
-2. `docker compose up -d`
+2. Modify `config.ts` if you want.
+3. `docker compose up -d`
 
-## Usage
+## Functionality
 
+- Apply default role to new members while joining.
 - `/ping` repond with latency.
-- `/applyrole` apply role to everyone in the guild. (max 1000 people)
+- `/applyrole` apply role to everyone in the guild.
