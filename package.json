@@ -3,7 +3,9 @@
   "version": "1.0.1",
   "main": "index.ts",
   "scripts": {
-    "test": "ts-node index.ts"
+    "test": "ts-node index.ts",
+		"build": "npx tsc --build",
+    "clean": "npx tsc --build --clean"
   },
   "repository": {
     "type": "git",

@@ -1,6 +1,10 @@
-FROM node:22.4-slim
+FROM node:22.4-slim AS build
 WORKDIR /work
-COPY ./package.json ./package-lock.json .
-RUN npm install
-COPY ./ .
-CMD ["npx", "ts-node", "index.ts"]
+COPY . /work
+RUN npm ci && npm run build
+
+FROM gcr.io/distroless/nodejs22-debian12
+WORKDIR /work
+COPY --from=build /work /work
+
+CMD ["index.js"]
