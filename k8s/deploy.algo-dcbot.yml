@@ -1,0 +1,50 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: algo-dcbot
+  labels:
+    app: algo-dcbot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: algo-dcbot
+      rel: stable
+  template:
+    metadata:
+      labels:
+        app: algo-dcbot
+        rel: stable
+        ver: '0.2'
+    spec:
+      containers:
+      - name: dcbot
+        image: 'gitea.konchin.com/system/algo-dcbot:latest'
+        env:
+          - name: DC_TOKEN
+            valueFrom:
+              configMapKeyRef:
+                name: algo-dcbot-config
+                key: dcbot-token
+                optional: false
+          - name: DC_CLIENTID
+            valueFrom:
+              configMapKeyRef:
+                name: algo-dcbot-config
+                key: dcbot-id
+                optional: false
+          - name: ADMIN_ID
+            valueFrom:
+              configMapKeyRef:
+                name: algo-dcbot-config
+                key: maintainer-id
+                optional: true
+          - name: DEFAULT_ROLE
+            valueFrom:
+              configMapKeyRef:
+                name: algo-dcbot-config
+                key: default-role-id
+                optional: true
+      imagePullSecrets:
+      - name: regcred

@@ -1,0 +1,10 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: algo-dcbot-config
+data:
+  dcbot-token:
+  dcbot-id:
+  maintainer-id:
+  default-role-id:
