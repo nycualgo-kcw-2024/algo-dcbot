@@ -16,11 +16,11 @@ spec:
       labels:
         app: algo-dcbot
         rel: stable
-        ver: '0.2'
+        ver: '0.3'
     spec:
       containers:
       - name: dcbot
-        image: 'gitea.konchin.com/system/algo-dcbot:latest'
+        image: 'gitea.konchin.com/services/algo-dcbot:latest'
         env:
           - name: DC_TOKEN
             valueFrom:
