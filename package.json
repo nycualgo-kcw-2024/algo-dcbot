@@ -4,7 +4,7 @@
   "main": "index.ts",
   "scripts": {
     "test": "ts-node index.ts",
-		"build": "npx tsc --build",
+    "build": "npx tsc --build",
     "clean": "npx tsc --build --clean"
   },
   "repository": {
@@ -19,7 +19,6 @@
   "homepage": "https://github.com/konchinshih/algo-dcbot",
   "dependencies": {
     "@types/node": "^20.3.2",
-    "axios": "^1.6.2",
     "discord.js": "^14.11.0",
     "dotenv": "^16.3.1",
     "fs": "^0.0.1-security",

@@ -3,6 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: algo-dcbot
+  namespace: algo-dcbot
   labels:
     app: algo-dcbot
 spec:
@@ -24,27 +25,23 @@ spec:
         env:
           - name: DC_TOKEN
             valueFrom:
-              configMapKeyRef:
-                name: algo-dcbot-config
+              secretKeyRef:
+                name: algo-dcbot-secret
                 key: dcbot-token
-                optional: false
           - name: DC_CLIENTID
             valueFrom:
-              configMapKeyRef:
-                name: algo-dcbot-config
+              secretKeyRef:
+                name: algo-dcbot-secret
                 key: dcbot-id
-                optional: false
           - name: ADMIN_ID
             valueFrom:
-              configMapKeyRef:
-                name: algo-dcbot-config
+              secretKeyRef:
+                name: algo-dcbot-secret
                 key: maintainer-id
-                optional: true
           - name: DEFAULT_ROLE
             valueFrom:
-              configMapKeyRef:
-                name: algo-dcbot-config
+              secretKeyRef:
+                name: algo-dcbot-secret
                 key: default-role-id
-                optional: true
       imagePullSecrets:
       - name: regcred

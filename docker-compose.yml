@@ -1,4 +1,5 @@
 services:
   service:
-    build: .
+    image: gitea.konchin.com/services/algo-dcbot:latest
+    env_file: ./.env
     restart: always
