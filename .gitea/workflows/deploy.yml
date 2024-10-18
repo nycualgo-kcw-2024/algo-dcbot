@@ -75,4 +75,4 @@ jobs:
 
       - name: Rollout restart
         run: |
-          kubectl --kubeconfig .kubeconfig -n rickroll rollout restart deployment algo-dcbot
+          kubectl --kubeconfig .kubeconfig -n algo-dcbot rollout restart deployment algo-dcbot
