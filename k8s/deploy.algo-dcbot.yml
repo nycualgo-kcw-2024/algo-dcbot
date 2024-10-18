@@ -11,37 +11,34 @@ spec:
   selector:
     matchLabels:
       app: algo-dcbot
-      rel: stable
   template:
     metadata:
       labels:
         app: algo-dcbot
-        rel: stable
-        ver: '0.3'
     spec:
       containers:
       - name: dcbot
-        image: 'gitea.konchin.com/services/algo-dcbot:latest'
+        image: gitea.konchin.com/service/algo-dcbot:latest
         env:
           - name: DC_TOKEN
             valueFrom:
               secretKeyRef:
                 name: algo-dcbot-secret
-                key: dcbot-token
+                key: DC_TOKEN
           - name: DC_CLIENTID
             valueFrom:
               secretKeyRef:
                 name: algo-dcbot-secret
-                key: dcbot-id
+                key: DC_CLIENTID
           - name: ADMIN_ID
             valueFrom:
               secretKeyRef:
                 name: algo-dcbot-secret
-                key: maintainer-id
+                key: ADMIN_ID
           - name: DEFAULT_ROLE
             valueFrom:
               secretKeyRef:
                 name: algo-dcbot-secret
-                key: default-role-id
+                key: DEFAULT_ROLE
       imagePullSecrets:
       - name: regcred

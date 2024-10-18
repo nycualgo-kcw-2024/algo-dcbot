@@ -6,7 +6,7 @@ import {logger} from '../logger';
 import {config} from '../config';
 
 function isMember(
-	member: GuildMember | PartialGuildMember
+  member: GuildMember | PartialGuildMember
 ): member is GuildMember {
   return member.partial === false;
 }
@@ -21,11 +21,11 @@ export async function handleMemberAdd(
     if(!isMember(member))
       throw Error('type mismatch: member.partial');
 
-		await member.guild.members.addRole({
-			role: config.defaultRole,
-			user: member
-		});
-		logger.log(`${member} has been given role.`);
+    await member.guild.members.addRole({
+      role: config.defaultRole,
+      user: member
+    });
+    logger.log(`${member} has been given role.`);
   }catch(err: unknown){
     let message;
     if(err instanceof Error) message = err.message;

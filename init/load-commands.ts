@@ -11,8 +11,8 @@ export async function loadCommands(client: ExtendedClient): Promise<Array<string
   for(const folder of commandFolders){
     const commandsPath = path.join(foldersPath, folder);
     const commandsFiles = path.basename(__filename).endsWith('.ts')
-			? readdirSync(commandsPath).filter(file => file.endsWith('.ts'))
-			: readdirSync(commandsPath).filter(file => file.endsWith('.js'));
+      ? readdirSync(commandsPath).filter(file => file.endsWith('.ts'))
+      : readdirSync(commandsPath).filter(file => file.endsWith('.js'));
     for(const file of commandsFiles){
       const filePath = path.join(commandsPath, file);
       const data = await import(filePath);
