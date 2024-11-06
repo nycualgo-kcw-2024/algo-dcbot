@@ -1,7 +1,5 @@
-name: Build image and deploy
-
-on:
-  push
+name: Build image
+on: [push]
 
 jobs:
   release-image:
@@ -46,33 +44,8 @@ jobs:
           context: .
           file: ./Dockerfile
           platforms: |
-            linux/amd64            
+            linux/amd64
           push: true
           tags: |
             ${{ env.CONTAINER_REGISTRY }}/${{ env.GITEA_REPO }}:${{ env.GITEA_REF_NAME }}
-            ${{ env.CONTAINER_REGISTRY }}/${{ env.GITEA_REPO }}:${{ env.GITEA_TAG }}        
-
-  deploy:
-    needs: release-image
-    runs-on: imgbuilder
-    container: 
-      image: gitea.konchin.com/image/kubectl
-      credentials:
-        username: ${{ secrets.REGISTRY_USERNAME }}
-        password: ${{ secrets.REGISTRY_PASSWORD }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup kubeconfig
-        run: |
-          echo "${{ secrets.KUBE_CONFIG }}" > .kubeconfig
-          cat .kubeconfig                    
-
-      - name: Deploy
-        run: |
-          kubectl --kubeconfig .kubeconfig apply -Rf k8s/                    
-
-      - name: Rollout restart
-        run: |
-          kubectl --kubeconfig .kubeconfig -n algo-dcbot rollout restart deployment algo-dcbot
+            ${{ env.CONTAINER_REGISTRY }}/${{ env.GITEA_REPO }}:${{ env.GITEA_TAG }}
